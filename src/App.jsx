@@ -1,10 +1,12 @@
-
+import Quiz from "./components/Quiz";
 
 function App() {
 
 
   return (
     <>
+      
+      <Quiz/>
 
     </>
   )
