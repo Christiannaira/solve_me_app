@@ -5,10 +5,11 @@ import Result from './Result';
 const Quiz = () => {
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const[userAnswers, setUserAnswers] = useState([]);
     const[isSolveFinished, setIsSolveFinished] = useState(false);
 
     const answerList = [null, null, null];
+    const[userAnswers, setUserAnswers] = useState(answerList);
+
 
     const contents = [
         {question: "What is the main purpose of React?",
@@ -44,6 +45,11 @@ const Quiz = () => {
 
     const handleOption = (option) => {
 
+        const newAnswerList = [...userAnswers];
+        newAnswerList[currentQuestion] = option;
+
+        setUserAnswers(newAnswerList);
+
         if (currentQuestion === (contents.length - 1)) {
             setIsSolveFinished(true);
         } else {
@@ -54,7 +60,7 @@ const Quiz = () => {
     }
 
     if (isSolveFinished) {
-        return <Result/>;
+        return <Result userAnswers={userAnswers}/>;
     }
 
 
@@ -79,7 +85,7 @@ const Quiz = () => {
 
         <div className="content_navigation mt-5 d-flex justify-content-between">
             <button type='button' className='btn btn-primary' onClick={prev} disabled={currentQuestion === 0}>Prev</button>
-            <button type='button' className='btn btn-primary' onClick={next}>Next</button>
+            <button type='button' className='btn btn-primary' onClick={next}>{currentQuestion === (contents.length - 1)? "Finish" : "Next"}</button>
         </div>
 
 
