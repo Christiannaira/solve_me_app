@@ -8,6 +8,8 @@ const Quiz = () => {
     const[userAnswers, setUserAnswers] = useState([]);
     const[isSolveFinished, setIsSolveFinished] = useState(false);
 
+    const answerList = [null, null, null];
+
     const contents = [
         {question: "What is the main purpose of React?",
          options: ["To style web pages", "To connect to databases", "To build user interfaces", "To manage server-side logic"],
@@ -41,7 +43,13 @@ const Quiz = () => {
     }
 
     const handleOption = (option) => {
-        setUserAnswers([...userAnswers, option]);
+
+        if (currentQuestion === (contents.length - 1)) {
+            setIsSolveFinished(true);
+        } else {
+            setCurrentQuestion(currentQuestion + 1);
+        }
+
         console.log(userAnswers);
     }
 
