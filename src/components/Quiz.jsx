@@ -60,7 +60,7 @@ const Quiz = () => {
     }
 
     if (isSolveFinished) {
-        return <Result userAnswers={userAnswers}/>;
+        return <Result userAnswers={userAnswers} contents={contents}/>;
     }
 
 
