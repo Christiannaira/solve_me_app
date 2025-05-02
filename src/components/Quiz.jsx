@@ -16,8 +16,26 @@ const Quiz = () => {
     ]
 
   return (
-    <div>
-      <h2>{contents[currentQuestion].question}</h2>
+    <div className='quiz_main container border mt-5 rounded text-center p-5'>
+
+      <h1>Solve Me App</h1>
+
+      <div className='quiz_main_content mt-5'>
+
+        <h2>{contents[currentQuestion].question}</h2>
+        
+        <div className='option_main_content d-flex flex-column'>
+
+            {contents[currentQuestion].options.map((option, key) => {
+                return <button key={key} className='btn btn-primary m-1 p-2' type='button'>{option}</button>
+            })}
+
+        </div>
+
+
+
+      </div>
+     
     </div>
   )
 }
