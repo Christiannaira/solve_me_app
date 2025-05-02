@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import Result from './Result';
+
 
 const Quiz = () => {
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
+    const[userAnswers, setUserAnswers] = useState([]);
+    const[isSolveFinished, setIsSolveFinished] = useState(false);
 
     const contents = [
         {question: "What is the main purpose of React?",
@@ -19,9 +23,14 @@ const Quiz = () => {
         },
     ]
 
+
     const next = () => {
 
-        setCurrentQuestion(currentQuestion + 1);
+        if (currentQuestion === (contents.length - 1)) {
+            setIsSolveFinished(true);
+        } else {
+            setCurrentQuestion(currentQuestion + 1);
+        }
 
     }
 
@@ -30,6 +39,16 @@ const Quiz = () => {
         setCurrentQuestion(currentQuestion - 1);
 
     }
+
+    const handleOption = (option) => {
+        setUserAnswers([...userAnswers, option]);
+        console.log(userAnswers);
+    }
+
+    if (isSolveFinished) {
+        return <Result/>;
+    }
+
 
   return (
     <div className='quiz_main container-sm border mt-5 rounded text-center p-5'>
@@ -43,14 +62,16 @@ const Quiz = () => {
         <div className='option_main_content d-flex flex-column'>
 
             {contents[currentQuestion].options.map((option, key) => {
-                return <button key={key} className='btn btn-success m-1 p-2' type='button'>{option}</button>
+                return <button key={key} className='btn btn-success m-1 p-2' type='button' onClick={() => {
+                    handleOption(option);
+                }}>{option}</button>
             })}
 
         </div>
 
         <div className="content_navigation mt-5 d-flex justify-content-between">
             <button type='button' className='btn btn-primary' onClick={prev} disabled={currentQuestion === 0}>Prev</button>
-            <button type='button' className='btn btn-primary' onClick={next} disabled={currentQuestion === (contents.length - 1)}>Next</button>
+            <button type='button' className='btn btn-primary' onClick={next}>Next</button>
         </div>
 
 
