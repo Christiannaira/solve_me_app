@@ -13,10 +13,26 @@ const Quiz = () => {
         options: ["state", "setState", "props", "render"],
         answer: "props"
            },
+        {question: "What is the correct syntax to create a functional component in React?",
+        options: ["class MyComponent extends React.Component {}", "function MyComponent() { return <div />; }", "React.createComponent(MyComponent)", "new React.Component(MyComponent)"],
+        answer: "function MyComponent() { return <div />; }"
+        },
     ]
 
+    const next = () => {
+
+        setCurrentQuestion(currentQuestion + 1);
+
+    }
+
+    const prev = () => {
+
+        setCurrentQuestion(currentQuestion - 1);
+
+    }
+
   return (
-    <div className='quiz_main container border mt-5 rounded text-center p-5'>
+    <div className='quiz_main container-sm border mt-5 rounded text-center p-5'>
 
       <h1>Solve Me App</h1>
 
@@ -27,9 +43,14 @@ const Quiz = () => {
         <div className='option_main_content d-flex flex-column'>
 
             {contents[currentQuestion].options.map((option, key) => {
-                return <button key={key} className='btn btn-primary m-1 p-2' type='button'>{option}</button>
+                return <button key={key} className='btn btn-success m-1 p-2' type='button'>{option}</button>
             })}
 
+        </div>
+
+        <div className="content_navigation mt-5 d-flex justify-content-between">
+            <button type='button' className='btn btn-primary' onClick={prev} disabled={currentQuestion === 0}>Prev</button>
+            <button type='button' className='btn btn-primary' onClick={next} disabled={currentQuestion === (contents.length - 1)}>Next</button>
         </div>
 
 
