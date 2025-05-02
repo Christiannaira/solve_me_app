@@ -11,3 +11,10 @@
 
 /*quiz main style*/
 
+.quiz_main {
+    height: 700px;
+}
+
+h2.question_headline {
+    height: 50px;
+}

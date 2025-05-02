@@ -69,11 +69,11 @@ const Quiz = () => {
 
       <h1>Solve Me App</h1>
 
-      <div className='quiz_main_content mt-5'>
+      <div className='quiz_main_content mt-5 d-flex flex-column'>
 
-        <h2>{contents[currentQuestion].question}</h2>
+        <h2 className='question_headline w-100'>{currentQuestion + 1}. {contents[currentQuestion].question}</h2>
         
-        <div className='option_main_content d-flex flex-column'>
+        <div className='option_main_content d-flex flex-column mt-5'>
 
             {contents[currentQuestion].options.map((option, key) => {
                 return <button key={key} className='btn btn-success m-1 p-2' type='button' onClick={() => {
