@@ -10,7 +10,6 @@ const Quiz = () => {
     const answerList = [null, null, null];
     const[userAnswers, setUserAnswers] = useState(answerList);
 
-
     const contents = [
         {question: "What is the main purpose of React?",
          options: ["To style web pages", "To connect to databases", "To build user interfaces", "To manage server-side logic"],
@@ -60,7 +59,7 @@ const Quiz = () => {
     }
 
     if (isSolveFinished) {
-        return <Result userAnswers={userAnswers} contents={contents}/>;
+        return <Result userAnswers={userAnswers} contents={contents} setIsSolveFinished={setIsSolveFinished} setCurrentQuestion={setCurrentQuestion}/>;
     }
 
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Result = ({userAnswers, contents}) => {
+const Result = ({userAnswers, contents, setIsSolveFinished, setCurrentQuestion}) => {
 
   const [score, setScore] = useState(0);
 
@@ -17,6 +17,13 @@ const Result = ({userAnswers, contents}) => {
     })
 
     setScore(newScore);
+
+  }
+
+  const handleRestart = () => {
+
+    setIsSolveFinished(false);
+    setCurrentQuestion(0);
 
   }
 
@@ -39,6 +46,8 @@ const Result = ({userAnswers, contents}) => {
         </div>
 
         <h2 className='mt-2 fs-2'>{score} / {contents.length}</h2>
+
+        <button type='button' onClick={handleRestart}>Start Again</button>
 
     </div>
   )
