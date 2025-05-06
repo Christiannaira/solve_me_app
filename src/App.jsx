@@ -1,13 +1,23 @@
 import Quiz from "./components/Quiz";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
 
 
   return (
     <>
-      
-        <Quiz/>
 
+        <Router>
+
+          <Routes>
+
+            <Route path="/" element={<Quiz/>}/>
+
+          </Routes>
+
+        </Router>
+
+        
     </>
   )
 }
