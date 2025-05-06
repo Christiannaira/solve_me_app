@@ -6,7 +6,7 @@ const Result = ({userAnswers, contents, setIsSolveFinished, setCurrentQuestion})
 
   const [switchButton, setSwitchButton] = useState(false);
 
-  
+  let displayScore = score + " / " + contents.length;
 
   const handleResult = () => {
  
@@ -48,7 +48,7 @@ const Result = ({userAnswers, contents, setIsSolveFinished, setCurrentQuestion})
             <button type='button' className='btn btn-primary fs-2 p-2 mt-5' onClick={handleResult} disabled={switchButton? true : false}>Get Result</button>
         </div>
 
-        <h2 className='mt-2 fs-2'>{score} / {contents.length}</h2>
+        <h2 className='mt-2 fs-2'>{score > 0? displayScore: "none"}</h2>
 
         <button type='button' onClick={handleRestart} className='btn btn-info mt-2'>Start Again</button>
 
