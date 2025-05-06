@@ -50,7 +50,7 @@ const Result = ({userAnswers, contents, setIsSolveFinished, setCurrentQuestion})
 
         <h2 className='mt-2 fs-2'>{score} / {contents.length}</h2>
 
-        <button type='button' onClick={handleRestart}>Start Again</button>
+        <button type='button' onClick={handleRestart} className='btn btn-info mt-2'>Start Again</button>
 
     </div>
   )
