@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const ApiTesting = () => {
+
+  const [data, setData] = useState(null);
 
   useEffect(() => {
 
@@ -18,7 +20,8 @@ const ApiTesting = () => {
         };
 
         const response = await axios.request(options);
-        console.log(response.data); 
+
+        setData(response.data);
         
 
       } catch (error) {
@@ -31,6 +34,12 @@ const ApiTesting = () => {
     
 
   }, []);
+
+  try {
+    console.log(data[1]);
+  } catch(error) {
+    console.log(error);
+  }
 
   return (
     <div>
